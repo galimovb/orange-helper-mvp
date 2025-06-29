@@ -15,8 +15,6 @@ class JwtCreatedListener
 
         $payload = $event->getData();
 
-        unset($payload['username']);
-
         $payload['id'] = $user->getId();
         $payload['roles'] = $user->getRoles();
         $payload['phoneNumber'] = $user->getPhoneNumber();

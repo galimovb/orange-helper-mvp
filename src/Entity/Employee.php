@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\EmployeeRepository;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -12,9 +13,9 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 
-#[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`user`')]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+#[ORM\Entity(repositoryClass: EmployeeRepository::class)]
+#[ORM\Table(name: '`employees`')]
+class Employee implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -58,22 +59,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $phoneNumber = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $childrenFullName = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?int $childrenAge = null;
-
     /**
      * @var Collection<int, ConsultationRequest>
      */
     #[MaxDepth(1)]
-    #[ORM\OneToMany(targetEntity: ConsultationRequest::class, mappedBy: 'user', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: ConsultationRequest::class, mappedBy: 'consultant')]
     private Collection $consulationRequests;
 
     public function __construct()
     {
-        $this->roles = ['ROLE_USER'];
+        $this->roles = ['ROLE_EMPLOYEE'];
         $this->createdAt = new \DateTimeImmutable();
         $this->isActive = true;
         $this->consulationRequests = new ArrayCollection();
@@ -238,30 +233,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getChildrenFullName(): ?string
-    {
-        return $this->childrenFullName;
-    }
-
-    public function setChildrenFullName(?string $childrenFullName): static
-    {
-        $this->childrenFullName = $childrenFullName;
-
-        return $this;
-    }
-
-    public function getChildrenAge(): ?int
-    {
-        return $this->childrenAge;
-    }
-
-    public function setChildrenAge(?int $childrenAge): static
-    {
-        $this->childrenAge = $childrenAge;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, ConsultationRequest>
      */
@@ -274,7 +245,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->consulationRequests->contains($consulationRequest)) {
             $this->consulationRequests->add($consulationRequest);
-            $consulationRequest->setUser($this);
+            $consulationRequest->setConsultant($this);
         }
 
         return $this;
@@ -284,8 +255,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->consulationRequests->removeElement($consulationRequest)) {
             // set the owning side to null (unless already changed)
-            if ($consulationRequest->getUser() === $this) {
-                $consulationRequest->setUser(null);
+            if ($consulationRequest->getConsultant() === $this) {
+                $consulationRequest->setConsultant(null);
             }
         }
 

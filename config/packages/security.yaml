@@ -2,26 +2,50 @@ security:
     password_hashers:
         App\Entity\User:
             algorithm: auto
+        App\Entity\Employee:
+            algorithm: auto
 
     providers:
-        app_user_provider:
+        user_provider:
             entity:
                 class: App\Entity\User
                 property: phoneNumber
 
+        employee_provider:
+            entity:
+                class: App\Entity\Employee
+                property: email
+
     firewalls:
-        login:
-            pattern: ^/login
+        # 🔐 API — для обычных пользователей
+        api:
+            pattern: ^/api
             stateless: true
+            provider: user_provider
             json_login:
-                check_path: /login/check
+                check_path: /api/login/check
                 username_path: phoneNumber
                 password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: App\Listener\CustomAuthenticationFailureHandler
+            jwt: ~
+            entry_point: App\Listener\JwtAuthenticationEntryPoint
 
+        # 🛠 Админка
         admin:
             pattern: ^/admin
-            http_basic: ~
-            provider: app_user_provider
+            provider: employee_provider
+            form_login:
+                login_path: /admin/login
+                check_path: /admin/login
 
+            logout:
+                path: /admin/logout
+                target: /
+            lazy: true
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/api/login/check, roles: PUBLIC_ACCESS }
+        - { path: ^/api/register, roles: PUBLIC_ACCESS }
+        - { path: ^/api, roles: ROLE_USER }

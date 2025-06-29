@@ -1,0 +1,9 @@
+# translations/security.ru.yaml
+Invalid credentials.: 'Неверный телефон или пароль'
+User not found.: 'Такого пользователя нет'
+Authentication request failed: 'Ошибка аутентификации'
+Account is disabled: 'Аккаунт отключен'
+Account is locked: 'Аккаунт заблокирован'
+JWT Token not found.: JWT токен не найден
+Invalid JWT Token: Неверный JWT токен
+Expired JWT Token: Срок действия JWT токена истёк

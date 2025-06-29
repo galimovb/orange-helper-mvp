@@ -2,8 +2,8 @@
 
 namespace App\Service;
 
-// src/Service/Auth/RegistrationService.php
 use App\DTO\RegisterUserDto;
+use App\DTO\UserResponseDto;
 use App\Entity\User;
 use App\Exception\RegistrationValidationFailedException;
 use App\Exception\UserAlreadyExistsException;
@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Exception\ValidationFailedException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationService
 {
@@ -20,6 +21,8 @@ class RegistrationService
     private EntityManagerInterface $entityManager;
 
     private ValidatorInterface $validator;
+
+    private TranslatorInterface $translator;
 
 
     public function __construct(
@@ -34,11 +37,23 @@ class RegistrationService
         $this->validator = $validator;
     }
 
-    public function register(RegisterUserDto $dto): User
+    public function register(RegisterUserDto $dto): UserResponseDto
     {
         // Проверка существования пользователя
         if ($this->userRepository->existsByPhone($dto->phoneNumber)) {
             throw new UserAlreadyExistsException();
+        }
+
+        // Валидация DTO
+        $violations = $this->validator->validate($dto);
+        if (count($violations) > 0) {
+            $errors = [];
+
+            foreach ($violations as $violation) {
+                $errors[$violation->getPropertyPath()][] = $violation->getMessage();
+            }
+
+            throw new RegistrationValidationFailedException($errors);
         }
 
         try {
@@ -53,9 +68,10 @@ class RegistrationService
             $this->entityManager->persist($user);
             $this->entityManager->flush();
 
-            return $user;
+            return new UserResponseDto($user);
         } catch (\Exception $e) {
             throw new \RuntimeException('Registration failed: '.$e->getMessage(), 500, $e);
         }
     }
+
 }

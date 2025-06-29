@@ -1,0 +1,13 @@
+# Общие шаблоны ошибок
+NotBlank: 'Поле "{{ label }}" обязательно для заполнения.'
+Length.min: '{{ label }} должен содержать минимум {{ limit }} символов.'
+Range.notInRange: '{{ label }} должен быть от {{ min }} до {{ max }}.'
+
+# Специфичные названия полей
+register_user_dto:
+  phoneNumber: 'Номер телефона'
+  password: 'Пароль'
+  firstName: 'Имя'
+  age: 'Возраст'
+  lastName: 'Фамилия'
+  secondName: 'Отчество'

@@ -1,0 +1,17 @@
+App\DTO\RegisterUserDto:
+  phoneNumber:
+    NotBlank: 'Phone number is required.'
+  password:
+    NotBlank: 'Password is required.'
+    Length:
+      minMessage: 'Password must be at least {{ limit }} characters long.'
+  firstName:
+    NotBlank: 'First name is required.'
+  age:
+    NotBlank: 'Age is required.'
+    Range:
+      notInRangeMessage: 'Age must be between {{ min }} and {{ max }}.'
+  lastName:
+    NotBlank: 'Last name is required.'
+  secondName:
+    NotBlank: 'Second name is required.'

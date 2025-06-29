@@ -17,10 +17,9 @@ class RegisterUserDto
     #[Assert\NotBlank]
     public string $firstName;
 
-    #[Assert\NotBlank]
-    #[Assert\Type(type: 'digit')]
-    public string $age;
-
+    #[Assert\NotNull]
+    #[Assert\Range(min: 1, max: 120)]
+    public int $age;
 
     #[Assert\NotBlank]
     public string $lastName;

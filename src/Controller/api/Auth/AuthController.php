@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class AuthController extends AbstractController
 {
-    #[Route('/login/check', name: 'login', methods: ['POST', 'OPTIONS'])]
+    #[Route('/api/login/check', name: 'login', methods: ['POST', 'OPTIONS'])]
     public function login(): Response
     {
        return new JsonResponse(['message' => 'Успешно']);
