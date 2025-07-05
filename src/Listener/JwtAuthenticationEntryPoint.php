@@ -15,7 +15,8 @@ class JwtAuthenticationEntryPoint implements AuthenticationEntryPointInterface
         return new JsonResponse([
             'error' => [
                 'code' => 401,
-                'message' => 'Токен отсутствует, доступ запрещен.',
+                'error_code' => 'TOKEN_NOT_FOUND',
+                'message' => 'Токен авторизации отсутствует',
             ]
         ], Response::HTTP_UNAUTHORIZED);
     }

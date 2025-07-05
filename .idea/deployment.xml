@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="orangehelper" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="orangehelper">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/var" />
+            <excludedPath path="/vendor" />
+            <excludedPath path="/.env" />
+            <excludedPath local="true" path="$PROJECT_DIR$/var" />
+            <excludedPath local="true" path="$PROJECT_DIR$/vendor" />
+            <excludedPath local="true" path="$PROJECT_DIR$/.env" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

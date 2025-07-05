@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f4e51298-c504-4867-8142-dea6394a4ef5" name="orangehelper" url="194.87.201.160">
+        <fileTransfer rootFolder="/var/www/orangehelper-backend" accessType="SFTP" host="194.87.201.160" port="22" sshConfigId="b2875817-0157-4ec9-94a5-73bac3fad691" sshConfig="galimovb@194.87.201.160:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
+use App\Enum\ConsultationType;
+use App\Enum\EmployeeSphera;
 use App\Repository\EmployeeRepository;
-use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
@@ -21,7 +21,6 @@ class Employee implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $email = null;
@@ -58,6 +57,37 @@ class Employee implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $phoneNumber = null;
+
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
+    private ?string $education = null;
+
+    #[ORM\Column(type: Types::STRING, length: 255, nullable: true)]
+    private ?string $cualification = null; //квалификация
+
+    #[ORM\Column(type: Types::INTEGER, nullable: true)]
+    private ?int $experience = null; // Стаж в годах
+
+    #[ORM\Column(type: 'string', nullable: true, enumType: EmployeeSphera::class)]
+    private EmployeeSphera $employeeSphera;
+
+    public function getCualification(): ?string
+    {
+        return $this->cualification;
+    }
+
+    public function setCualification(?string $cualification): void
+    {
+        $this->cualification = $cualification;
+    }  //квалификация
+    public function getEmployeeSphera(): EmployeeSphera
+    {
+        return $this->employeeSphera;
+    }
+
+    public function setEmployeeSphera(EmployeeSphera $employeeSphera): void
+    {
+        $this->employeeSphera = $employeeSphera;
+    }
 
     /**
      * @var Collection<int, ConsultationRequest>
@@ -230,6 +260,39 @@ class Employee implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->phoneNumber = $phoneNumber;
 
+        return $this;
+    }
+
+    public function getEducation(): ?string
+    {
+        return $this->education;
+    }
+
+    public function setEducation(?string $education): static
+    {
+        $this->education = $education;
+        return $this;
+    }
+
+    public function getSpecialization(): ?string
+    {
+        return $this->specialization;
+    }
+
+    public function setSpecialization(?string $specialization): static
+    {
+        $this->specialization = $specialization;
+        return $this;
+    }
+
+    public function getExperience(): ?int
+    {
+        return $this->experience;
+    }
+
+    public function setExperience(?int $experience): static
+    {
+        $this->experience = $experience;
         return $this;
     }
 

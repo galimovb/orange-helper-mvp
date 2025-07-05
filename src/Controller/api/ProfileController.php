@@ -2,14 +2,14 @@
 namespace App\Controller\api;
 
 use App\DTO\ChangePasswordDto;
+use App\DTO\Response\UserResponseDto;
 use App\DTO\UpdateUserDto;
-use App\DTO\UserResponseDto;
 use App\Service\ProfileService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Exception\ValidatorException;
 
 #[Route('/api/profile')]

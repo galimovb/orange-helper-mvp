@@ -3,13 +3,12 @@
 namespace App\Service;
 
 use App\DTO\RegisterUserDto;
-use App\DTO\UserResponseDto;
+use App\DTO\Response\UserResponseDto;
 use App\Entity\User;
 use App\Exception\RegistrationValidationFailedException;
 use App\Exception\UserAlreadyExistsException;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Messenger\Exception\ValidationFailedException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;

@@ -16,9 +16,10 @@ class JwtExceptionListener
         $response = new JsonResponse([
             'error' => [
                 'code' => 401,
+                'error_code' => $this->getErrorCode($event),
                 'message' => $this->getErrorMessage($event),
             ]
-        ], 302);
+        ], 401);
 
         $event->setResponse($response);
     }
@@ -37,4 +38,20 @@ class JwtExceptionListener
 
         return 'Ошибка аутентификации';
     }
+
+    private function getErrorCode(JWTFailureEventInterface $event): string
+    {
+        if ($event instanceof JWTInvalidEvent) {
+            return 'INVALID_TOKEN';
+        }
+        if ($event instanceof JWTExpiredEvent) {
+            return 'TOKEN_EXPIRED';
+        }
+        if ($event instanceof JWTNotFoundEvent) {
+            return 'TOKEN_NOT_FOUND';
+        }
+
+        return 'AUTHENTICATION_ERROR';
+    }
+
 }
