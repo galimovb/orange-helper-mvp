@@ -325,4 +325,23 @@ class Employee implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    private function normalizePhone(string $phone): string
+    {
+        // Удаляем все символы, кроме + и цифр
+        $phone = preg_replace('/[^\d+]/', '', $phone);
+
+        // Преобразуем 89... в +79..., если пользователь ввел в локальном формате
+        if (preg_match('/^89\d{9}$/', $phone)) {
+            $phone = '+7' . substr($phone, 1);
+        }
+
+        // Если нет плюса, добавим (на твое усмотрение)
+        if (!str_starts_with($phone, '+')) {
+            $phone = '+' . $phone;
+        }
+
+        return $phone;
+    }
+
 }

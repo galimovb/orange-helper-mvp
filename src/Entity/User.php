@@ -55,7 +55,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'string', length: 15, unique: true)]
     private ?string $phoneNumber = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -291,4 +291,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function normalizePhone(string $phone): string
+    {
+        // Удаляем все символы, кроме + и цифр
+        $phone = preg_replace('/[^\d+]/', '', $phone);
+
+        // Преобразуем 89... в +79..., если пользователь ввел в локальном формате
+        if (preg_match('/^89\d{9}$/', $phone)) {
+            $phone = '+7' . substr($phone, 1);
+        }
+
+        // Если нет плюса, добавим (на твое усмотрение)
+        if (!str_starts_with($phone, '+')) {
+            $phone = '+' . $phone;
+        }
+
+        return $phone;
+    }
+
 }

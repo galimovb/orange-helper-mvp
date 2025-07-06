@@ -57,7 +57,7 @@ class RegistrationService
 
         try {
             $user = new User();
-            $user->setPhoneNumber($dto->phoneNumber);
+            $user->setPhoneNumber($user->normalizePhone($dto->phoneNumber));
             $user->setPassword($this->passwordHasher->hashPassword($user, $dto->password));
             $user->setAge($dto->age);
             $user->setFirstName($dto->firstName);

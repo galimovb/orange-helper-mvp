@@ -26,7 +26,7 @@ security:
                 check_path: /api/login/check
                 username_path: phoneNumber
                 password_path: password
-                success_handler: lexik_jwt_authentication.handler.authentication_success
+                success_handler: App\Listener\CustomAuthenticationSuccessHandler
                 failure_handler: App\Listener\CustomAuthenticationFailureHandler
             jwt: ~
             entry_point: App\Listener\JwtAuthenticationEntryPoint
