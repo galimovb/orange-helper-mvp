@@ -8,7 +8,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class CreateConsultationRequestDto
 {
-    #[Assert\NotBlank]
     #[Assert\Choice(callback: [ConsultationType::class, 'cases'])]
     public ConsultationType $consultationType;
 
