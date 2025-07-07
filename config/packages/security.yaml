@@ -29,6 +29,8 @@ security:
                 success_handler: App\Listener\CustomAuthenticationSuccessHandler
                 failure_handler: App\Listener\CustomAuthenticationFailureHandler
             jwt: ~
+            refresh_jwt:
+                check_path: /api/token/refresh
             entry_point: App\Listener\JwtAuthenticationEntryPoint
 
         # 🛠 Админка
@@ -47,5 +49,7 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/api/login/check, roles: PUBLIC_ACCESS }
+        - { path: ^/api/token/refresh, roles: PUBLIC_ACCESS }
         - { path: ^/api/register, roles: PUBLIC_ACCESS }
+        - { path: ^/api/docs, roles: PUBLIC_ACCESS }
         - { path: ^/api, roles: ROLE_USER }

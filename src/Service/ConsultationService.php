@@ -27,27 +27,9 @@ class ConsultationService
         private ValidatorInterface $validator
     ) {}
 
-
-    public function createJobRequest(CreateJobRequestDto $dto): array
+    public function getAll(): array
     {
-        $errors = $this->validator->validate($dto);
-        if (count($errors) > 0) {
-            throw new ValidatorException((string) $errors);
-        }
-
-        $jobRequest = new JobRequest();
-        $jobRequest->setFullName($dto->fullName);
-        $jobRequest->setAge($dto->age);
-        $jobRequest->setEducation($dto->education);
-        $jobRequest->setWorkPlace($dto->workPlace);
-        $jobRequest->setBeenWorkingYears($dto->beenWorkingYears);
-        $jobRequest->setPhone($dto->phone);
-        $jobRequest->setEmployeeSphera($dto->employeeSphera);
-
-        $this->em->persist($jobRequest);
-        $this->em->flush();
-
-        return ['id' => $jobRequest->getId()];
+        return $this->consultationRepo->findAll();
     }
 
 }

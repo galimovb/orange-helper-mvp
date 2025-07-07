@@ -24,7 +24,7 @@ class ConsultationController extends AbstractController
     public function consultations():JsonResponse
     {
         $user = $this->security->getUser();
-        $consultations = $this->service->getAllForUser($user);
+        $consultations = $this->service->getAll($user);
 
         return $this->json($consultations);
     }

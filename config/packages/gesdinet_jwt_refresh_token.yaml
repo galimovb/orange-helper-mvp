@@ -1,0 +1,8 @@
+gesdinet_jwt_refresh_token:
+    ttl: 2592000
+    firewall: api
+    cookie:
+        enabled: true
+        http_only: true
+        secure: true
+        same_site: none
