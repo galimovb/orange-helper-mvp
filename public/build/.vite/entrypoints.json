@@ -1,0 +1,104 @@
+{
+  "base": "/build/",
+  "entryPoints": {
+    "home": {
+      "css": [
+        "/build/assets/style.css"
+      ],
+      "dynamic": [],
+      "js": [
+        "/build/js/home.js"
+      ],
+      "legacy": false,
+      "preload": [
+        "/build/js/style.DutaF5r9.js"
+      ]
+    },
+    "login": {
+      "css": [
+        "/build/assets/style.css",
+        "/build/assets/Input.css"
+      ],
+      "dynamic": [],
+      "js": [
+        "/build/js/login.js"
+      ],
+      "legacy": false,
+      "preload": [
+        "/build/js/style.DutaF5r9.js",
+        "/build/js/Input.B7Eanypf.js"
+      ]
+    },
+    "schedule": {
+      "css": [
+        "/build/assets/style.css",
+        "/build/assets/AdminHeader.css"
+      ],
+      "dynamic": [],
+      "js": [
+        "/build/js/schedule.js"
+      ],
+      "legacy": false,
+      "preload": [
+        "/build/js/style.DutaF5r9.js",
+        "/build/js/AdminHeader.HYtmYGoz.js"
+      ]
+    },
+    "users": {
+      "css": [
+        "/build/assets/style.css",
+        "/build/assets/AdminHeader.css"
+      ],
+      "dynamic": [],
+      "js": [
+        "/build/js/users.js"
+      ],
+      "legacy": false,
+      "preload": [
+        "/build/js/style.DutaF5r9.js",
+        "/build/js/AdminHeader.HYtmYGoz.js"
+      ]
+    },
+    "requests": {
+      "css": [
+        "/build/assets/style.css",
+        "/build/assets/AdminHeader.css",
+        "/build/assets/Input.css"
+      ],
+      "dynamic": [],
+      "js": [
+        "/build/js/requests.js"
+      ],
+      "legacy": false,
+      "preload": [
+        "/build/js/style.DutaF5r9.js",
+        "/build/js/AdminHeader.HYtmYGoz.js",
+        "/build/js/Input.B7Eanypf.js"
+      ]
+    },
+    "materials": {
+      "css": [
+        "/build/assets/style.css",
+        "/build/assets/AdminHeader.css"
+      ],
+      "dynamic": [],
+      "js": [
+        "/build/js/materials.js"
+      ],
+      "legacy": false,
+      "preload": [
+        "/build/js/style.DutaF5r9.js",
+        "/build/js/AdminHeader.HYtmYGoz.js"
+      ]
+    }
+  },
+  "legacy": false,
+  "metadatas": {},
+  "version": [
+    "8.2.0",
+    8,
+    2,
+    0
+  ],
+  "viteServer": null
+}

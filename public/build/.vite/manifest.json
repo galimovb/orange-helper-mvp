@@ -1,0 +1,133 @@
+{
+  "_AdminHeader.HYtmYGoz.js": {
+    "file": "js/AdminHeader.HYtmYGoz.js",
+    "name": "AdminHeader",
+    "imports": [
+      "_style.DutaF5r9.js"
+    ],
+    "css": [
+      "assets/AdminHeader.css"
+    ]
+  },
+  "_AdminHeader.css": {
+    "file": "assets/AdminHeader.css",
+    "src": "_AdminHeader.css"
+  },
+  "_Input.B7Eanypf.js": {
+    "file": "js/Input.B7Eanypf.js",
+    "name": "Input",
+    "imports": [
+      "_style.DutaF5r9.js"
+    ],
+    "css": [
+      "assets/Input.css"
+    ]
+  },
+  "_Input.css": {
+    "file": "assets/Input.css",
+    "src": "_Input.css"
+  },
+  "_style.DutaF5r9.js": {
+    "file": "js/style.DutaF5r9.js",
+    "name": "style",
+    "css": [
+      "assets/style.css"
+    ],
+    "assets": [
+      "assets/TaylorSans-Regular.ttf",
+      "assets/TaylorSans-Bold.ttf",
+      "assets/TaylorSans-ExtraBold.ttf",
+      "assets/TaylorSans-Light.ttf",
+      "assets/TaylorSans-SemiBold.ttf",
+      "assets/TaylorSans-Thin.ttf"
+    ]
+  },
+  "_style.css": {
+    "file": "assets/style.css",
+    "src": "_style.css"
+  },
+  "src/assets/fonts/TaylorSans/TaylorSans-Bold.ttf": {
+    "file": "assets/TaylorSans-Bold.ttf",
+    "src": "src/assets/fonts/TaylorSans/TaylorSans-Bold.ttf"
+  },
+  "src/assets/fonts/TaylorSans/TaylorSans-ExtraBold.ttf": {
+    "file": "assets/TaylorSans-ExtraBold.ttf",
+    "src": "src/assets/fonts/TaylorSans/TaylorSans-ExtraBold.ttf"
+  },
+  "src/assets/fonts/TaylorSans/TaylorSans-Light.ttf": {
+    "file": "assets/TaylorSans-Light.ttf",
+    "src": "src/assets/fonts/TaylorSans/TaylorSans-Light.ttf"
+  },
+  "src/assets/fonts/TaylorSans/TaylorSans-Regular.ttf": {
+    "file": "assets/TaylorSans-Regular.ttf",
+    "src": "src/assets/fonts/TaylorSans/TaylorSans-Regular.ttf"
+  },
+  "src/assets/fonts/TaylorSans/TaylorSans-SemiBold.ttf": {
+    "file": "assets/TaylorSans-SemiBold.ttf",
+    "src": "src/assets/fonts/TaylorSans/TaylorSans-SemiBold.ttf"
+  },
+  "src/assets/fonts/TaylorSans/TaylorSans-Thin.ttf": {
+    "file": "assets/TaylorSans-Thin.ttf",
+    "src": "src/assets/fonts/TaylorSans/TaylorSans-Thin.ttf"
+  },
+  "src/pages/home.js": {
+    "file": "js/home.js",
+    "name": "home",
+    "src": "src/pages/home.js",
+    "isEntry": true,
+    "imports": [
+      "_style.DutaF5r9.js"
+    ]
+  },
+  "src/pages/login.js": {
+    "file": "js/login.js",
+    "name": "login",
+    "src": "src/pages/login.js",
+    "isEntry": true,
+    "imports": [
+      "_style.DutaF5r9.js",
+      "_Input.B7Eanypf.js"
+    ]
+  },
+  "src/pages/materials.js": {
+    "file": "js/materials.js",
+    "name": "materials",
+    "src": "src/pages/materials.js",
+    "isEntry": true,
+    "imports": [
+      "_style.DutaF5r9.js",
+      "_AdminHeader.HYtmYGoz.js"
+    ]
+  },
+  "src/pages/requests.js": {
+    "file": "js/requests.js",
+    "name": "requests",
+    "src": "src/pages/requests.js",
+    "isEntry": true,
+    "imports": [
+      "_style.DutaF5r9.js",
+      "_AdminHeader.HYtmYGoz.js",
+      "_Input.B7Eanypf.js"
+    ]
+  },
+  "src/pages/schedule.js": {
+    "file": "js/schedule.js",
+    "name": "schedule",
+    "src": "src/pages/schedule.js",
+    "isEntry": true,
+    "imports": [
+      "_style.DutaF5r9.js",
+      "_AdminHeader.HYtmYGoz.js"
+    ]
+  },
+  "src/pages/users.js": {
+    "file": "js/users.js",
+    "name": "users",
+    "src": "src/pages/users.js",
+    "isEntry": true,
+    "imports": [
+      "_style.DutaF5r9.js",
+      "_AdminHeader.HYtmYGoz.js"
+    ]
+  }
+}

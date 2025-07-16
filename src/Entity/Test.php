@@ -19,7 +19,7 @@ class Test
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: 'json', nullable: true)]
     private ?array $questions = null;
 
     #[ORM\Column]

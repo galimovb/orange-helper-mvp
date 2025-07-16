@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import AdminHeader from "@/components/ui/AdminHeader.vue";
+import Input from "@/components/ui/Input.vue";
+import Button from "@/components/ui/Button.vue";
 
 
 const parents = [
