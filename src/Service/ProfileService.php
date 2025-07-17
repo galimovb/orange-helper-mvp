@@ -1,14 +1,13 @@
 <?php
 namespace App\Service;
 
-use App\DTO\UpdateUserDto;
-use App\DTO\ChangePasswordDto;
+use App\DTO\Request\ChangePasswordDto;
+use App\DTO\Request\UpdateUserDto;
 use App\Entity\User;
-use App\Exception\RegistrationValidationFailedException;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Validator\Exception\ValidatorException;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ProfileService
 {

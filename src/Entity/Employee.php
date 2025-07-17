@@ -68,7 +68,7 @@ class Employee implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $experience = null; // Стаж в годах
 
     #[ORM\Column(type: 'string', nullable: true, enumType: EmployeeSphera::class)]
-    private EmployeeSphera $employeeSphera;
+    private ?EmployeeSphera $employeeSphera = null;
 
     public function getCualification(): ?string
     {
@@ -79,7 +79,7 @@ class Employee implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->cualification = $cualification;
     }  //квалификация
-    public function getEmployeeSphera(): EmployeeSphera
+    public function getEmployeeSphera(): ?EmployeeSphera
     {
         return $this->employeeSphera;
     }

@@ -1,9 +1,9 @@
 <?php
 namespace App\Controller\api;
 
-use App\DTO\ChangePasswordDto;
+use App\DTO\Request\ChangePasswordDto;
+use App\DTO\Request\UpdateUserDto;
 use App\DTO\Response\UserResponseDto;
-use App\DTO\UpdateUserDto;
 use App\Service\ProfileService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;

@@ -3,8 +3,8 @@
 // src/Service/ConsultationRequestService.php
 namespace App\Service;
 
-use App\DTO\CreateConsultationRequestDto;
-use App\DTO\UpdateConsultationRequestDto;
+use App\DTO\Request\CreateConsultationRequestDto;
+use App\DTO\Request\UpdateConsultationRequestDto;
 use App\Entity\ConsultationRequest;
 use App\Exception\NotFoundException;
 use App\Repository\ConsultationRequestRepository;

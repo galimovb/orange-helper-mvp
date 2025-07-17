@@ -1,6 +1,6 @@
 <script setup>
-import { ref, watch } from 'vue';
-/*import { mask } from 'vue-the-mask';*/
+import {ref, watch} from 'vue';
+import {mask} from 'vue-the-mask';
 
 const props = defineProps({
   placeholder: String,
