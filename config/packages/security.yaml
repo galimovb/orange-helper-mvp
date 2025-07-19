@@ -53,6 +53,7 @@ security:
 
   access_control:
     - { path: ^/admin/login/check, roles: PUBLIC_ACCESS }
+    - { path: ^/admin/login, roles: PUBLIC_ACCESS }
     - { path: ^/admin/materials, roles: ROLE_ADMIN }
     - { path: ^/admin, roles: IS_AUTHENTICATED_FULLY }
     - { path: ^/api/login/check, roles: PUBLIC_ACCESS }
