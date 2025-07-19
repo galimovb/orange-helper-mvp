@@ -1,54 +1,62 @@
 security:
-    password_hashers:
-        App\Entity\User:
-            algorithm: auto
-        App\Entity\Employee:
-            algorithm: auto
+  password_hashers:
+    App\Entity\User:
+      algorithm: auto
+    App\Entity\Employee:
+      algorithm: auto
 
-    providers:
-        user_provider:
-            entity:
-                class: App\Entity\User
-                property: phoneNumber
+  providers:
+    user_provider:
+      entity:
+        class: App\Entity\User
+        property: phoneNumber
 
-        employee_provider:
-            entity:
-                class: App\Entity\Employee
-                property: email
+    employee_provider:
+      entity:
+        class: App\Entity\Employee
+        property: phoneNumber
 
-    firewalls:
-        # 🔐 API — для обычных пользователей
-        api:
-            pattern: ^/api
-            stateless: true
-            provider: user_provider
-            json_login:
-                check_path: /api/login/check
-                username_path: phoneNumber
-                password_path: password
-                success_handler: App\Listener\CustomAuthenticationSuccessHandler
-                failure_handler: App\Listener\CustomAuthenticationFailureHandler
-            jwt: ~
-            refresh_jwt:
-                check_path: /api/token/refresh
-            entry_point: App\Listener\JwtAuthenticationEntryPoint
+  firewalls:
+    # 🔐 API — для обычных пользователей
+    api:
+      pattern: ^/api
+      stateless: true
+      provider: user_provider
+      json_login:
+        check_path: /api/login/check
+        username_path: phoneNumber
+        password_path: password
+        success_handler: App\Listener\CustomAuthenticationSuccessHandler
+        failure_handler: App\Listener\CustomAuthenticationFailureHandler
+      jwt: ~
+      refresh_jwt:
+        check_path: /api/token/refresh
+      entry_point: App\Listener\JwtAuthenticationEntryPoint
 
-        # 🛠 Админка
-        admin:
-            pattern: ^/admin
-            provider: employee_provider
-            form_login:
-                login_path: /admin/login
-                check_path: /admin/login
+    # 🛠 Админка
 
-            logout:
-                path: /admin/logout
-                target: /
-            lazy: true
+    admin:
+      pattern: ^/admin
+      provider: employee_provider
+      access_denied_url: /admin/login
+      json_login:
+        check_path: /admin/login/check
+        username_path: phoneNumber
+        password_path: password
+        success_handler: App\Listener\CustomAuthenticationSuccessHandler
+        failure_handler: App\Listener\CustomAuthenticationFailureHandler
+      logout:
+        path: /admin/logout
+        target: /
+      lazy: true
 
-    access_control:
-        - { path: ^/api/login/check, roles: PUBLIC_ACCESS }
-        - { path: ^/api/token/refresh, roles: PUBLIC_ACCESS }
-        - { path: ^/api/register, roles: PUBLIC_ACCESS }
-        - { path: ^/api/docs, roles: PUBLIC_ACCESS }
-        - { path: ^/api, roles: ROLE_USER }
+
+  access_control:
+    - { path: ^/admin/login/check, roles: PUBLIC_ACCESS }
+    - { path: ^/admin/materials, roles: ROLE_ADMIN }
+    - { path: ^/admin, roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/api/login/check, roles: PUBLIC_ACCESS }
+    - { path: ^/api/token/refresh, roles: PUBLIC_ACCESS }
+    - { path: ^/api/register, roles: PUBLIC_ACCESS }
+    - { path: ^/api/docs, roles: PUBLIC_ACCESS }
+    - { path: ^/api, roles: ROLE_USER }

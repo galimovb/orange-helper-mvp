@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\DTO\RegisterUserDto;
+use App\DTO\Request\RegisterUserDto;
 use App\DTO\Response\UserResponseDto;
 use App\Entity\User;
 use App\Exception\RegistrationValidationFailedException;

@@ -2,9 +2,9 @@
 
 namespace App\Controller\api;
 
-use App\DTO\ConsultationRequestDto;
-use App\DTO\CreateConsultationRequestDto;
-use App\DTO\UpdateConsultationRequestDto;
+use App\DTO\Request\CreateConsultationRequestDto;
+use App\DTO\Request\UpdateConsultationRequestDto;
+use App\DTO\Response\ConsultationRequestDto;
 use App\Service\ConsultationRequestService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

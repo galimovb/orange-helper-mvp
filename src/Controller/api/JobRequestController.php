@@ -2,7 +2,7 @@
 
 namespace App\Controller\api;
 
-use App\DTO\CreateJobRequestDto;
+use App\DTO\Request\CreateJobRequestDto;
 use App\Service\JobRequestService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
