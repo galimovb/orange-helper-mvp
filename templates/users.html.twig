@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Вход</title>
-    <link href="{{ asset('build/assets/style.css') }}" rel="stylesheet">
-    <script type="module" src="{{ asset('build/js/users.js') }}"></script>
+    <title>Пользователи</title>
+    {{ vite_entry_script_tags('users') }}
+    {{ vite_entry_link_tags('users') }}
 </head>
 <body>
 <div id="vue-users"></div>

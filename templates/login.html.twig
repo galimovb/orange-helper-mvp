@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Вход</title>
-    <link href="{{ asset('build/assets/style.css') }}" rel="stylesheet">
-    <script type="module" src="{{ asset('build/js/login.js') }}"></script>
+    {{ vite_entry_script_tags('login') }}
+    {{ vite_entry_link_tags('login') }}
 </head>
 <body>
 <div id="vue-login"></div>

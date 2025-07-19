@@ -14,6 +14,7 @@ export default defineConfig({
         },
     },
     build: {
+        manifest: true,
         rollupOptions: {
             input: {
                 home: './src/pages/home.js',
