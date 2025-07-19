@@ -52,6 +52,7 @@ import {reactive} from 'vue';
 import RegisterAndLoginLayout from "@/components/ui/RegisterAndLoginLayout.vue";
 import Button from "@/components/ui/Button.vue";
 import Input from "@/components/ui/Input.vue";
+import axios from "axios";
 
 /*const authStore = useAuthStore();*/
 
@@ -60,7 +61,7 @@ const formData = reactive({
   password: ''
 });
 
-/*const handleSubmit = async () => {
+const handleSubmit = async () => {
   try {
     // Оставляем только цифры и плюс
     let cleanedPhone = formData.phoneNumber.replace(/[^\d+]/g, '');
@@ -86,18 +87,10 @@ const formData = reactive({
     };
 
     // 1. Выполняем запрос на авторизацию
-    await authApi.login(requestData);
+    await axios.post('/admin/login/check', requestData);
 
-    // 2. Проверяем авторизацию
-    await authStore.check();
-
-    // 3. Получаем URL для редиректа из query параметров
-    const redirectPath = route.query.redirect || '/';
-
-    // 4. Выполняем переход
-    await router.push(redirectPath);
   } catch (err) {
     console.error('Ошибка:', err.message);
   }
-};*/
+};
 </script>

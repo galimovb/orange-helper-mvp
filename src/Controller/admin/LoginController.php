@@ -13,5 +13,11 @@ class LoginController extends AbstractController
     {
         return $this->render('login.html.twig');
     }
+
+    #[Route('/admin/login/check', name: 'admin_login_check', methods: 'POST')]
+    public function loginCheck(): Response
+    {
+        return $this->render('login.html.twig');
+    }
 }
 
