@@ -2,35 +2,6 @@
 import { ref } from "vue";
 import AdminHeader from "@/components/ui/AdminHeader.vue";
 
-
-const materials = [
-  {
-    title: "Сказка о внутреннем ребенке",
-    category: "Литературная колонка",
-    date: "01.04.2025",
-    status: "Опубликовано"
-  },
-  {
-    title: "Музыкальная зарядка: доброе утро",
-    category: "Музыкальная волна",
-    date: "27.03.2025",
-    status: "Скрыто"
-  },
-  {
-    title: "Рисуем эмоции: мастер-класс для детей",
-    category: "Творческая мастерская",
-    date: "25.03.2025",
-    status: "Опубликовано"
-  },
-  {
-    title: "Как справляться с тревожностью?",
-    category: "Видеотека",
-    date: "22.03.2025",
-    status: "Опубликовано"
-  }
-];
-
-const isDropdownVisible = ref(false);
 const categories = ref([
   "Литературная колонка",
   "Творческая мастерская",
@@ -38,10 +9,27 @@ const categories = ref([
   "Видеотека"
 ]);
 
+const selectedCategory = ref("");
+const materialTitle = ref("");
+const materialLink = ref("");
+const materialStatus = ref("Опубликовано");
+const materialContent = ref("");
+
+const isDropdownVisible = ref(false);
+
 const toggleDropdown = () => {
   isDropdownVisible.value = !isDropdownVisible.value;
 };
 
+const addMaterial = () => {
+  console.log({
+    title: materialTitle.value,
+    category: selectedCategory.value,
+    link: materialLink.value,
+    status: materialStatus.value,
+    content: materialContent.value
+  });
+};
 </script>
 
 <template>
@@ -49,76 +37,97 @@ const toggleDropdown = () => {
   <section class="flex flex-col gap-11 px-[55px] my-[70px]">
     <div class="flex items-center justify-between">
       <h1 class="text-3xl leading-[100%]">
-        Список материалов
+        Добавить материал
       </h1>
-      <div class="relative">
-        <button
+    </div>
+
+    <div class="relative">
+      <button
           @click="toggleDropdown"
           class="bg-orange-500 flex items-center gap-12 text-[24px] text-white rounded-md focus:outline-none px-[15px] py-1"
-        >
-          Фильтр по разделу
-          <img
+      >
+        Выберите раздел
+        <img
             src="../../assets/img/accordion-icon.svg"
             alt="Стрелка"
             :class="{ 'rotate-180': isDropdownVisible }"
             class="w-4 h-4 filter invert"
-          />
-        </button>
-        <div
-          v-if="isDropdownVisible"
-          class="absolute bg-orange-500 shadow-lg rounded-md mt-1 w-full"
-        >
-          <ul class="py-2">
-            <li
+        />
+      </button>
+      <div v-if="isDropdownVisible" class="absolute bg-orange-500 shadow-lg rounded-md mt-1 w-full">
+        <ul class="py-2">
+          <li
               v-for="category in categories"
               :key="category"
+              @click="selectedCategory = category"
               class="text-xl text-white px-4 py-2 cursor-pointer hover:bg-gray-800"
-            >
-              {{ category }}
-            </li>
-          </ul>
-        </div>
+          >
+            {{ category }}
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="grid grid-cols-5 gap-x-[88px] text-3xl leading-[100%]">
-      <div>Название</div>
-      <div>Раздел</div>
-      <div>Дата добавления</div>
-      <div>Статус</div>
-      <div></div>
-    </div>
-    <div
-      v-for="(material, index) in materials"
-      :key="index"
-      class="grid grid-cols-5 gap-x-[88px] items-center"
-    >
-      <div class="p-4 border border-gray-300 rounded-lg">
-        {{ material.title }}
-      </div>
-      <div class="p-4 border border-gray-300 rounded-lg">
-        {{ material.category }}
-      </div>
-      <div class="p-4 border border-gray-300 rounded-lg">
-        {{ material.date }}
-      </div>
-      <div class="p-4 border border-gray-300 rounded-lg">
-        {{ material.status }}
-      </div>
-      <div class="flex gap-4">
-        <button class="bg-orange-500 text-white px-4 py-2 rounded-md">
-          Удалить материал
-        </button>
-      </div>
 
+    <div class="mt-4">
+      <label for="title" class="block text-lg">Название материала</label>
+      <input
+          id="title"
+          v-model="materialTitle"
+          type="text"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md"
+          placeholder="Введите название материала"
+      />
     </div>
-    <div class="col-span-5 text-center">
-      <button class="bg-orange-500 text-white px-6 py-3 rounded-md text-lg">Добавить материал</button>
+
+    <div v-if="selectedCategory === 'Музыкальная волна' || selectedCategory === 'Видеотека'">
+      <div class="mt-4">
+        <label for="link" class="block text-lg">Ссылка на видео/музыку</label>
+        <input
+            id="link"
+            v-model="materialLink"
+            type="url"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md"
+            placeholder="Введите ссылку"
+        />
+      </div>
+    </div>
+
+    <div v-if="selectedCategory === 'Литературная колонка' || selectedCategory === 'Творческая мастерская'">
+      <div class="mt-4">
+        <label for="content" class="block text-lg">Содержание материала</label>
+        <textarea
+            id="content"
+            v-model="materialContent"
+            rows="6"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md"
+            placeholder="Введите текст материала"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <label for="status" class="block text-lg">Статус</label>
+      <select
+          id="status"
+          v-model="materialStatus"
+          class="w-full px-4 py-2 border border-gray-300 rounded-md"
+      >
+        <option value="Опубликовано">Опубликовано</option>
+        <option value="Скрыто">Скрыто</option>
+      </select>
+    </div>
+
+    <div class="mt-6 text-center">
+      <button
+          @click="addMaterial"
+          class="bg-orange-500 text-white px-6 py-3 rounded-md text-lg"
+      >
+        Добавить материал
+      </button>
     </div>
   </section>
-
 </template>
 
-
 <style scoped>
-
+/* Можете добавить стили по необходимости */
 </style>
