@@ -1,1 +1,1 @@
-import{_ as o,c,o as n,a as t}from"./style.CZzhIzbW.js";const r={};function m(a,l){return n(),c("div",null,"Hello from Home.vue")}const s=o(r,[["render",m]]),e=document.getElementById("vue-home");e&&t(s).mount(e);
+import{_ as o,c,o as n,a as t}from"./style.CtA6EaYV.js";const r={};function m(a,l){return n(),c("div",null,"Hello from Home.vue")}const s=o(r,[["render",m]]),e=document.getElementById("vue-home");e&&t(s).mount(e);

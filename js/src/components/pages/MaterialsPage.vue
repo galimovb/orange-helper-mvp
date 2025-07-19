@@ -11,7 +11,7 @@ const categories = ref([
 
 const selectedCategory = ref("");
 const materialTitle = ref("");
-const materialLink = ref("");
+const materialLink = ref<File | null>(null);
 const materialStatus = ref("Опубликовано");
 const materialContent = ref("");
 
@@ -19,6 +19,13 @@ const isDropdownVisible = ref(false);
 
 const toggleDropdown = () => {
   isDropdownVisible.value = !isDropdownVisible.value;
+};
+
+const handleFileChange = (event: Event) => {
+  const input = event.target as HTMLInputElement;
+  if (input?.files?.[0]) {
+    materialLink.value = input.files[0];
+  }
 };
 
 const addMaterial = () => {
@@ -81,13 +88,12 @@ const addMaterial = () => {
 
     <div v-if="selectedCategory === 'Музыкальная волна' || selectedCategory === 'Видеотека'">
       <div class="mt-4">
-        <label for="link" class="block text-lg">Ссылка на видео/музыку</label>
+        <label for="link" class="block text-lg">Загрузите видео/музыку</label>
         <input
             id="link"
-            v-model="materialLink"
-            type="url"
+            @change="handleFileChange"
+            type="file"
             class="w-full px-4 py-2 border border-gray-300 rounded-md"
-            placeholder="Введите ссылку"
         />
       </div>
     </div>

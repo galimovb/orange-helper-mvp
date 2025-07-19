@@ -15,104 +15,74 @@ const toggleDropdown = () => {
         <button>
           <img src="../../assets/img/logo-bg__orange.svg" alt="logo">
         </button>
-        <div class="text-4xl leading-none">
+        <div class="text-2xl leading-none">
           <label>
-            Админитратор
+            Администратор
           </label>
         </div>
       </div>
-      <div class="text-4xl text-white leading-[100%] opacity-70">
-        <ul class="flex flex-col gap-6 ">
+      <div class="text-xl text-white leading-[100%] opacity-70">
+        <ul class="flex flex-col gap-4">
           <li
-            @click="toggleDropdown"
-            class="cursor-pointer hover:text-black"
+              @click="toggleDropdown"
+              class="cursor-pointer hover:text-black text-lg"
           >
             Редактирование информации
           </li>
           <ul
-            v-if="isDropdownOpen"
-            class="flex flex-col gap-4 text-2xl leading-[100%] text-white opacity-70"
+              v-if="isDropdownOpen"
+              class="flex flex-col gap-2 text-lg leading-[100%] text-white opacity-70"
           >
             <li>
-              <router-link
-                to="/"
-                class="hover:text-black"
-              >
+              <a href="/" class="hover:text-black">
                 Главная
-              </router-link>
+              </a>
             </li>
             <li>
-              <router-link
-                to="/diagnostics"
-                class="hover:text-black"
-              >
+              <a href="/diagnostics" class="hover:text-black">
                 Диагностика
-              </router-link>
+              </a>
             </li>
             <li>
-              <router-link
-                to="/news"
-                class="hover:text-black"
-              >
+              <a href="/news" class="hover:text-black">
                 Новости
-              </router-link>
+              </a>
             </li>
             <li>
-              <router-link
-                to="/useful-materials"
-                class="hover:text-black"
-              >
+              <a href="/useful-materials" class="hover:text-black">
                 Полезные материалы
-              </router-link>
+              </a>
             </li>
             <li>
-              <router-link
-                to="/consultation"
-                class="hover:text-black"
-              >
+              <a href="/consultation" class="hover:text-black">
                 Консультация
-              </router-link>
+              </a>
             </li>
           </ul>
-          <li>
-            <router-link
-              to="/admin/dashboard"
-              class="hover:text-black"
-            >
+          <li class="text-lg">
+            <a href="/admin/dashboard" class="hover:text-black">
               Дашборд
-            </router-link>
+            </a>
           </li>
-          <li>
-            <router-link
-              to="/admin/users"
-              class="hover:text-black"
-            >
+          <li class="text-lg">
+            <a href="/admin/users" class="hover:text-black">
               Пользователи
-            </router-link>
+            </a>
           </li>
-          <li>
-            <router-link
-              to="/admin/requests"
-              class="hover:text-black"
-            >
+          <li class="text-lg">
+            <a href="/admin/requests" class="hover:text-black">
               Заявки и обращения
-            </router-link>
+            </a>
           </li>
-          <li>
-            <router-link
-              to="/admin/materials"
-              class="hover:text-black"
-            >
+          <li class="text-lg">
+            <a href="/admin/materials" class="hover:text-black">
               Материалы платформы
-            </router-link>
+            </a>
           </li>
-          <li>
-            <router-link
-              to="/admin/schedule"
-              class="hover:text-black"
-            >
+          <li class="text-lg">
+            <a href="/admin/schedule" class="hover:text-black">
               Расписание и встречи
-            </router-link>
+            </a>
           </li>
         </ul>
       </div>
@@ -121,7 +91,5 @@ const toggleDropdown = () => {
 </template>
 
 <style scoped>
-.router-link-active {
-  color: black;
-}
+
 </style>
